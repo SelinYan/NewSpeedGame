@@ -2,7 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
+
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -20,3 +20,13 @@ body {
   min-height: 100vh;
 }
 
+.circle {
+  background-color: white;
+  border-radius: 50%;
+  color: #333;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
