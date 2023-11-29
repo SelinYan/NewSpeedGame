@@ -1,7 +1,7 @@
-function Circle() {
+function Circle({id}) {
     return (
         <div className="circle">
-            <p>circle</p>
+            <p>{id}</p>
         </div>
     );
 }

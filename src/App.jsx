@@ -1,6 +1,5 @@
 import { useState } from "react"
 import NewGame from "./components/NewGame"
-import Circle from "./UI_components/Circle"
 import Game from "./components/Game"
 import GameOver from "./components/GameOver"
 import { levels } from './levels'
@@ -8,7 +7,7 @@ import { levels } from './levels'
 function App() {
   const [player, setPlayer] = useState()
   const [circles, setCircles] = useState([])
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(100)
   const [gameLaunch, setGameLaunch] = useState(true)
   const [gameOn, setGameOn] = useState(false)
   const [gameOver, setGameOver] = useState(false)
@@ -34,12 +33,18 @@ function App() {
     setGameOver(!gameOver)
   }
 
+  const closeHandler = () => {
+    setGameOver(!gameOver)
+    setGameLaunch(!gameLaunch)
+    setScore(0)
+  }
+
   return (
     <>
       <h1>Catch the snow!</h1>
       {gameLaunch && <NewGame onclick={gameSetHandler} />}
       {gameOn && <Game score={score} circles={circles} stopHandler={stopHandler} />}
-      {gameOver && <GameOver />}
+      {gameOver && <GameOver closeHandler={closeHandler} {...player} score={score}/>}
     </>
   )
 }
