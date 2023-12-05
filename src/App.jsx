@@ -46,7 +46,7 @@ function App() {
   };
 
   const randomNumb = () => {
-    if (roundsCount.current >= 5) {
+    if (roundsCount.current >= 3) {
       stopHandler();
       return;
     }
