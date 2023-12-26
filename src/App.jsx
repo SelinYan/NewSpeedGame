@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
-import NewGame from './components/NewGame';
-import Game from './components/Game';
-import GameOver from './components/GameOver';
-import { levels } from './levels';
+import { useRef, useState } from "react";
+import NewGame from "./components/NewGame";
+import Game from "./components/Game";
+import GameOver from "./components/GameOver";
+import { levels } from "./levels";
 
 const getRndInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
@@ -19,6 +19,7 @@ function App() {
   const timeoutIdRef = useRef(null);
   const roundsCount = useRef(0);
   const currentInst = useRef(0);
+  console.log(currentInst);
 
   let pace = 1000;
   let levelAmount;

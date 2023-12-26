@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Snowburst+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   font-weight: 300;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,6 +16,9 @@
 }
 
 body {
+  background-image: url(./assets/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -25,8 +29,15 @@ body {
   text-align: center;
 }
 h1 {
-  font-family: "Snowburst One", sans-serif;
+  font-family: 'Alex Brush', cursive;
   font-size: 3rem;
+  color: #0F8A5F;
+  text-shadow: 2px 2px #fae26c;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  color: #34A65F;
 }
 
 .circles {
@@ -38,7 +49,7 @@ h1 {
 
 .circle {
   background-color: transparent;
-  border: 1px solid #333;
+  border: 1px solid #34A65F;
   border-radius: 50%;
   color: #5b5b5b;
   height: 100px;
@@ -48,7 +59,7 @@ h1 {
   align-items: center;
 }
 .circle.active {
-  background: url('./assets/snow.svg') center center/cover;
+  background: url('./assets/snow.jpg') center center/cover;
 
 }
 
@@ -62,15 +73,22 @@ input, button  {
   padding:0.8rem 2rem;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   margin: 2rem;
+  color: #D5A84C;
 }
 
 button {
   background-color: aliceblue;
-  color: #333;
-  font-weight: 400;
+  color: #0F8A5F;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: #fae26c;
+}
 }
 
 input {
@@ -89,7 +107,7 @@ input {
   display: grid;
   justify-items: center;
   align-items: center;
-  color: #333;
+  color: #34A65F;
 }
 
 .gameover_box {
