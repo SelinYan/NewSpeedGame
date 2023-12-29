@@ -132,7 +132,7 @@ input {
   padding:0
 }
 
-.game_data {
+.game_info {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;

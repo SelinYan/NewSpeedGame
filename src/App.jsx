@@ -1,16 +1,16 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import NewGame from "./components/NewGame";
-import Game from "./components/Game";
+import OnGame from "./components/OnGame";
 import GameOver from "./components/GameOver";
 import { levels } from "./levels";
 
 const getRndInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 function App() {
-  const [player, setPlayer] = useState();
+  const [player, setPlayer] = useState(null);
   const [circles, setCircles] = useState([]);
   const [score, setScore] = useState(0);
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState(null);
   const [gameLaunch, setGameLaunch] = useState(true);
   const [gameOn, setGameOn] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -19,7 +19,6 @@ function App() {
   const timeoutIdRef = useRef(null);
   const roundsCount = useRef(0);
   const currentInst = useRef(0);
-  console.log(currentInst);
 
   let pace = 1000;
   let levelAmount;
@@ -42,7 +41,7 @@ function App() {
     });
 
     // using the callback to ensure that we have the latest state
-    setGameLaunch((prevLaunch) => !prevLaunch);
+    setGameLaunch(false);
     gameStart();
   };
 
@@ -65,10 +64,13 @@ function App() {
     timeoutIdRef.current = setTimeout(randomNumb, pace);
   };
 
-  function gameStart() {
-    setGameOn(!gameOn);
+  const gameStart = () => {
+    setScore(0);
+    setCurrent(null);
+    roundsCount.current = 0;
+    setGameOn(true);
     randomNumb();
-  }
+  };
 
   const clickHandler = (id) => {
     if (current !== id) {
@@ -84,14 +86,12 @@ function App() {
     timeoutIdRef.current = null;
 
     setGameOn(false);
-    setGameOver(!gameOver);
-    roundsCount.current = null;
-    pace = 1000;
+    setGameOver(true);
   };
 
   const closeHandler = () => {
-    setGameOver(!gameOver);
-    setGameLaunch(!gameLaunch);
+    setGameOver(false);
+    setGameLaunch(true);
     setScore(0);
   };
 
@@ -100,7 +100,7 @@ function App() {
       <h1>Catch the snow!</h1>
       {gameLaunch && <NewGame onclick={gameSetHandler} />}
       {gameOn && (
-        <Game
+        <OnGame
           score={score}
           circles={circles}
           stopHandler={stopHandler}
