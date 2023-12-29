@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function NewGame({ onclick }) {
   const [name, setName] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("easy");
+  const [selectedLevel, setSelectedLevel] = useState("null");
 
   const inputHandler = (e) => {
     setName(e.target.value);
@@ -25,11 +25,25 @@ function NewGame({ onclick }) {
         onChange={inputHandler}
       />
       <div>
-        <button onClick={() => levelSelectHandler("easy")}>Easy</button>
-        <button onClick={() => levelSelectHandler("medium")}>Medium</button>
-        <button onClick={() => levelSelectHandler("hard")}>Hard</button>
+        <button
+          onClick={() => levelSelectHandler("easy")}
+          className={selectedLevel === "easy" ? "selected-level" : ""}>
+          Easy
+        </button>
+        <button
+          onClick={() => levelSelectHandler("medium")}
+          className={selectedLevel === "medium" ? "selected-level" : ""}>
+          Medium
+        </button>
+        <button
+          onClick={() => levelSelectHandler("hard")}
+          className={selectedLevel === "hard" ? "selected-level" : ""}>
+          Hard
+        </button>
       </div>
-      <button onClick={startGame}>Start Game</button>
+      <button onClick={startGame} disabled={!selectedLevel}>
+        Start Game
+      </button>
     </div>
   );
 }

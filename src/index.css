@@ -91,6 +91,10 @@ button {
 }
 }
 
+.selected-level {
+  background-color: #fae26c !important;
+}
+
 input {
   font-family: inherit;
   font-size: inherit;
